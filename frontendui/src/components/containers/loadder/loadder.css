@@ -1,0 +1,31 @@
+.loadder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -300px;
+    
+}
+
+.loadder i{
+    font-size: 100px;
+    color: rgb(120, 120, 202);
+    margin: 0 auto;
+    position: relative;
+    top: 10%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    animation: mymove 2s infinite;
+}
+
+
+@keyframes mymove {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

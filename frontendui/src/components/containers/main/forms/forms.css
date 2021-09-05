@@ -1,0 +1,11 @@
+.form-basic {
+    width: 100%
+}
+
+form small {
+    font-size: 10px;
+}
+
+.fm-invalid {
+    color: rgb(224, 21, 21);
+}

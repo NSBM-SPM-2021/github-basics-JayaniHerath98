@@ -1,0 +1,19 @@
+.container-table {
+    width: 100%;
+}
+
+/* Custom Table */
+.ct-table-heading {
+    position: relative;
+    float: right;
+}
+
+.thead-custom {
+    background: linear-gradient(45deg, #74b9ff 30%, #55efc4 90%);
+    color: white;
+    font-size: 14px;
+}
+
+tbody {
+    font-size: 12px;
+}

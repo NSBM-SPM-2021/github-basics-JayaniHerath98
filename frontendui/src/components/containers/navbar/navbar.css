@@ -1,0 +1,68 @@
+@import '../../../index.css';
+
+.navbar {
+    background-color: var(--secondaryColor);
+    height: 60px;
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    border-bottom: 2px solid var(--alternateColor2);
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .nav-icon {
+    display: none;
+}
+
+.nav-icon i {
+    font-size: var(--highlightFont);
+}
+
+.nav-left a {
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.nav-left .active {
+    color: #d33b82;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-right a {
+    margin-left: 30px;
+}
+
+.nav-right a i {
+    font-size: var(--headingsFont);
+    background-color: var(--lightColor);
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px var(--darkColor);
+    padding: 8px;
+    color: #d33b82;
+}
+
+@media only screen and (max-width: 978px){
+    .nav-icon {
+        display: inline;
+    }
+    
+}
+
+@media only screen and (max-width: 480px){
+    .nav-left {
+        display: none;
+    }
+    
+}

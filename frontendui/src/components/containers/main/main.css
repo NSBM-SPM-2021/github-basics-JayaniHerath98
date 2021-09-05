@@ -1,0 +1,38 @@
+
+.container-dashboard {
+    position: relative;
+    left: 160px;
+    top: 60px;
+    width: calc(100% - 340px);
+    padding: 5px 15px;
+    overflow:hidden;
+}
+
+.container-header {
+    text-align: left;
+    line-height: 10px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 70px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px var(--shadeColor), 0px -5px 10px #fff;
+
+}
+
+.card i {
+    font-size: var(--superFont);
+}
+
+
