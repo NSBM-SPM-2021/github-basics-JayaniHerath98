@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const userController = require("./controllers/user.controller");
-const itemController = require("./controllers/item.controller");
+const bookController = require("./controllers/book.controller");
 
 require("dotenv").config();
 
@@ -23,19 +23,18 @@ app.route("/users/:userId")
     .patch(userController.updateUser)
     .delete(userController.deleteUser);
 
-app.route("/items")
-    .get(itemController.getItems)
-    .post(itemController.createItem);
+app.route("/books")
+    .get(bookController.getBooks)
+    .post(bookController.createBook);
 
-app.route("/items/:itemId")
-    .get(itemController.getItem)
-    .patch(itemController.updateItem)
-    .delete(itemController.deleteItem);
+app.route("/books/:bookId")
+    .get(bookController.getBook)
+    .patch(bookController.updateBook)
+    .delete(bookController.deleteBook);
 
-app.route("/items/byUser/:userId")
-    .get(itemController.getItemsByUser);
+// app.route("/books/byUser/:userId")
+//     .get(bookController.getbooksByUser);
 
-app.route("/checkDate").post(itemController.checkDate);
 
 app.listen(PORT, () => console.log("Running on "+PORT));
 
