@@ -32,6 +32,7 @@ import Main from './main';
 import Map from './map';
 import './dashboard.css';
 import { Grid } from '@material-ui/core';
+import Books from './books';
 
 const drawerWidth = 270;
 
@@ -210,6 +211,12 @@ function ResponsiveDrawer(props) {
             <ListItemText primary={'Dashboard'} />
         </ListItem>
         </Link>
+        <Link to={`${url}/books`}>
+        <ListItem button key={'BOOKS'} onClick={()=>setTopic('BOOKSS')}>
+            <ListItemIcon><House /></ListItemIcon>
+            <ListItemText primary={'Books'} />
+        </ListItem>
+        </Link>
         <Link to={`${url}/organizations`}>
         <ListItem button key={'ORGANIZATIONS'} onClick={()=>setTopic('ORGANIZATIONS')}>
             <ListItemIcon><House /></ListItemIcon>
@@ -353,6 +360,7 @@ function ResponsiveDrawer(props) {
       <Grid item xs={12}>
         <Switch>
                 <Route path={path} exact component={Main}/>
+                <Route path={`${path}/books`}exact component={Books}/>
                 <Route path={`${path}/users`}exact component={Users}/>
                 <Route path={`${path}/map`}exact component={Map}/>
                 <Route path={`${path}/organizations`} component={Organizations}/>
