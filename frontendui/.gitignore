@@ -14,7 +14,6 @@
 /src/components/plugins
 /src/models/Organization.js
 /src/models/Route.js
-/src/services
 
 # misc
 .DS_Store
