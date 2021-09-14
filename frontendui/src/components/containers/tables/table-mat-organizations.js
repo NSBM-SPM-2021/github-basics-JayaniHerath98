@@ -8,7 +8,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,7 +18,6 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import organization_service from '../../../services/organization_service';
 import CustomButton from '../main/buttons/button';
 import BooksModalDialog from '../main/forms/books-popup';
-import { Delete, Update } from '@material-ui/icons';
 import Loadder from '../loadder/loadder';
 
 const useStyles = makeStyles({

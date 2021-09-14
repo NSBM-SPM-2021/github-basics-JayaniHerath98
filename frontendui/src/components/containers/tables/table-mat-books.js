@@ -11,8 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import books_service from "../../../services/books_service";
 import Chips from "../chips/chips";
 import Loadder from "../loadder/loadder";
-import CustomButton from "../main/buttons/button";
-import { Button } from "@material-ui/core";
+import BooksModalDialog from '../main/forms/books-popup';
 
 
 const useStyles = makeStyles({
@@ -115,6 +114,9 @@ export default function BooksTable() {
   return (
     <>
     <TableContainer component={Paper}>
+      <div className="ct-table-heading">
+        <BooksModalDialog />
+      </div>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
