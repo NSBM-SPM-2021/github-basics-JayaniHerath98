@@ -5,7 +5,7 @@ import { Add } from '@material-ui/icons';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import CustomButton from '../buttons/button';
-import OrganizationMultiForm from './organization-form';
+import BooksMultiForm from './book-form';
 import EventEmitter from '../../../../utils/EventEmitter';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function OrganizationModalDialog() {
+export default function BooksModalDialog() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -60,7 +60,7 @@ export default function OrganizationModalDialog() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <OrganizationMultiForm/>
+            <BooksMultiForm/>
           </div>
         </Fade>
       </Modal>

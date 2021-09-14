@@ -18,7 +18,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import organization_service from '../../../services/organization_service';
 import CustomButton from '../main/buttons/button';
-import OrganizationModalDialog from '../main/forms/organization-popup';
+import BooksModalDialog from '../main/forms/books-popup';
 import { Delete, Update } from '@material-ui/icons';
 import Loadder from '../loadder/loadder';
 
@@ -156,7 +156,7 @@ export default function DepartmentTable() {
     <>
     <TableContainer component={Paper} className={classes.container}>
       <div className="ct-table-heading">
-        <OrganizationModalDialog />
+        <BooksModalDialog />
       </div>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>

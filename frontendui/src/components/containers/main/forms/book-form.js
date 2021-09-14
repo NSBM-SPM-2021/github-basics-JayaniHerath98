@@ -3,8 +3,8 @@ import { Field, Formik, Form, FormikConfig, FormikValues } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, FormControl, InputLabel, OutlinedInput, Button, Box, MenuItem, Select, FormHelperText, Divider, Grid } from '@material-ui/core';
 import { useForm, Controller } from 'react-hook-form';
-import Organization from '../../../../models/Organization';
-import organization_service from '../../../../services/organization_service';
+import Book from '../../../../models/Book';
+import books_service from '../../../../services/books_service';
 import Chips from '../../chips/chips';
 import EventEmitter from '../../../../utils/EventEmitter';
 import './forms.css';
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function OrganizationMultiForm(){
+export default function BooksMultiForm(){
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -88,8 +88,8 @@ export default function OrganizationMultiForm(){
         if(inputValidation()){alert("Need to Resubmit");return} else{
             contacts.forEach((contact)=>conlist.push(contact.title));
             console.log(conlist);
-            var organization = new Organization(name, info, address, incharge, conlist, category);
-            organization_service.addOrganization(organization);
+            var book = new Book(name, info, incharge, incharge, 5, category);
+            books_service.addBook(book);
         }
         EventEmitter.emit("closePopup", {close:true});
     }
