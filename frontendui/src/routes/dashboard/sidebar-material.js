@@ -29,7 +29,6 @@ import { Route, Switch, NavLink, Link, useRouteMatch, useHistory } from 'react-r
 import Users from './users';
 import Organizations from './organizations';
 import Main from './main';
-import Map from './map';
 import './dashboard.css';
 import { Grid } from '@material-ui/core';
 import Books from './books';
@@ -362,7 +361,6 @@ function ResponsiveDrawer(props) {
                 <Route path={path} exact component={Main}/>
                 <Route path={`${path}/books`}exact component={Books}/>
                 <Route path={`${path}/users`}exact component={Users}/>
-                <Route path={`${path}/map`}exact component={Map}/>
                 <Route path={`${path}/organizations`} component={Organizations}/>
         </Switch>
       </Grid>

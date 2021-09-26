@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import UsersTable from '../../components/containers/tables/table-mat-users';
+// import UsersTable from '../../components/containers/tables/table-mat-users';
 const Users = () => {
    
     return (
@@ -10,7 +10,7 @@ const Users = () => {
                 </div> */}
 
                 <div className="card">
-                    <UsersTable />
+                    {/* <UsersTable /> */}
                 </div>
         </>
     );

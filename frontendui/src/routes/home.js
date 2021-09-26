@@ -16,7 +16,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../styles/login_style.js';
-import employee_service from '../services/officials_service';
 
 function Copyright() {
     return (
@@ -40,7 +39,7 @@ export default function SignInSide() {
     var [password, setPassword] = useState();
 
     const onLoginSubmit = async () => {
-        await employee_service.getUserByContactNo(username, password)
+        // await employee_service.getUserByContactNo(username, password)
     }
 
     return (

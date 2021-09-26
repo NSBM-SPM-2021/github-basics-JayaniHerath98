@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import queryString from 'query-string';
 import organization_service from '../../services/organization_service';
-import OrganizationsUserTable from '../../components/containers/tables/table-mat-organization-users';
+// import OrganizationsUserTable from '../../components/containers/tables/table-mat-organization-users';
 import Loadder from '../../components/containers/loadder/loadder';
 import { Card, CardContent, Divider } from '@material-ui/core';
 
@@ -55,9 +55,9 @@ const SingleOrganization = () => {
             </Card>
             <br></br>
 
-            {
+            {/* {
                 selected?<OrganizationsUserTable organization={selected}/>:<></>
-            }       
+            }        */}
                     
 
         </>

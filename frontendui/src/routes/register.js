@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../styles/login_style.js';
 import User from '../models/User';
-import employee_service from '../services/officials_service';
+// import employee_service from '../services/officials_service';
 
 function Copyright() {
     return (
@@ -47,7 +47,7 @@ export default function SignUpSide() {
         if(password===cpassword){
             var user = new User(name, password, contact, nic, "NOT APPROVED");
             console.log(name, password, contact, nic, "NOT APPROVED");
-            employee_service.addOfficial(user);
+            // employee_service.addOfficial(user);
         } else {
 
         }
