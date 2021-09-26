@@ -20,11 +20,10 @@ const useStyles = makeStyles((theme) => ({
 export default function BooksMultiForm(){
 
     const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
+    const [qty, setQty] = useState(1);
+    const [author, setAuthor] = useState('');
+    const [published, setPublished] = useState('');
     const [info, setInfo] = useState('');
-    const [contact, setContact] = useState('');
-    const [contacts, setContacts] = useState([]);
-    const [incharge, setIncharge] = useState('');
     const [category, setCategory] = useState('');
     const [parent, setParent] = useState('');
 
@@ -57,8 +56,8 @@ export default function BooksMultiForm(){
         } else {
             setInfoError('');
         }
-        if(address.length===0){
-            setAddressError("Can't keep Address input field Empty");
+        if(author.length===0){
+            setAddressError("Can't keep Author input field Empty");
             isError = true;
         } else {
             setAddressError('');
@@ -73,22 +72,20 @@ export default function BooksMultiForm(){
         return isError;
     }
 
-    const contactValidationAdd = () => {
-        if(contact.length!==10){
-            setContactError("Entered Contact Number is incorrect");
-            // isError = true;            
-        } else {
-            setContactError('');
-            setContacts(contacts=>[...contacts, {title: contact}]);
-        }
-    }
+    // const contactValidationAdd = () => {
+    //     if(contact.length!==10){
+    //         setContactError("Entered Contact Number is incorrect");
+    //         // isError = true;            
+    //     } else {
+    //         setContactError('');
+    //         setContacts(contacts=>[...contacts, {title: contact}]);
+    //     }
+    // }
 
     const onOrganizationSubmit = () => {
-        var conlist = [];
         if(inputValidation()){alert("Need to Resubmit");return} else{
-            contacts.forEach((contact)=>conlist.push(contact.title));
-            console.log(conlist);
-            var book = new Book(name, info, incharge, incharge, 5, category);
+            
+            var book = new Book(name, info, author, published, 5, category);
             books_service.addBook(book);
         }
         EventEmitter.emit("closePopup", {close:true});
@@ -102,7 +99,7 @@ export default function BooksMultiForm(){
                             <Box paddingBottom={2}>
                             <FormControl fullWidth variant="outlined"
                             error={nameError===''?false:true}>
-                                <InputLabel htmlFor="name">Name</InputLabel>
+                                <InputLabel htmlFor="name">Name of the Book</InputLabel>
                                 <OutlinedInput  id="name" value={name}  label="Name" name="name" 
                                 onChange={(e)=>setName(e.target.value)}/>
                             </FormControl>
@@ -111,7 +108,7 @@ export default function BooksMultiForm(){
                             <Box paddingBottom={2}>
                             <FormControl fullWidth variant="outlined"
                             error={infoError===''?false:true}>
-                                <InputLabel htmlFor="info">Details</InputLabel>
+                                <InputLabel htmlFor="info">Descrription on Book</InputLabel>
                                 <OutlinedInput  id="info" value={info}  label="Info" name="info"
                                 onChange={(e)=>setInfo(e.target.value)}/>
                             </FormControl>
@@ -120,67 +117,30 @@ export default function BooksMultiForm(){
                             <Box paddingBottom={2}>
                             <FormControl fullWidth variant="outlined"
                             error={addressError===''?false:true}>
-                                <InputLabel htmlFor="address">Address</InputLabel>
-                                <OutlinedInput  id="address" value={address}  label="Address" name="address" 
-                                onChange={(e)=>setAddress(e.target.value)}/>
+                                <InputLabel htmlFor="author">Author of Book</InputLabel>
+                                <OutlinedInput  id="author" value={author}  label="Author" name="author" 
+                                onChange={(e)=>setAuthor(e.target.value)}/>
                             </FormControl>
                             <small className="fm-invalid">{addressError}</small>
                             </Box>
                             <Box paddingBottom={2}>
-                            <Grid container spacing={1}>
-                                <Grid item xs={6}>
-                                    <FormControl variant="outlined">
-                                        <InputLabel htmlFor="contact">Contact</InputLabel>
-                                        <OutlinedInput  id="contact" value={contact}  label="Contact" name="contact"
-                                        onChange={(e)=>{setContact(e.target.value); console.log(e.target.value)}}/>
-                                        <Button variant="contained" color="success"
-                                        onClick={()=>{contactValidationAdd()}}>ADD</Button>
-                                        <small className="fm-invalid">{contactError}</small>
-                                    </FormControl>
-                                    
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Chips type="normal" color="primary" values={contacts} />
-                                </Grid>
-                            </Grid>
-                            
-                            </Box>
-                            {/* <Box paddingBottom={2}>
-                                <FormControl variant="outlined">
-                                    <InputLabel htmlFor="contact">Contact</InputLabel>
-                                    <OutlinedInput  id="contact" value={contact}  label="Contact" name="contact"
-                                    onChange={(e)=>{setContact(e.target.value); console.log(e.target.value)}}/>
-                                </FormControl>
-                            </Box> */}
-                            <Box paddingBottom={2}>
-                            <FormControl fullWidth variant="outlined" className={classes.formControl}>
-                                <InputLabel id="category-lb">Departments</InputLabel>
-                                <Select
-                                labelId="category-lb"
-                                id="category"
-                                value={category}
-                                onChange={(e)=>setCategory(e.target.value)}
-                                label="Category"
-                                >
-                                <MenuItem selected={true} value={"General"}>General</MenuItem>
-                                </Select>
+                            <FormControl fullWidth variant="outlined"
+                            error={addressError===''?false:true}>
+                                <InputLabel htmlFor="publisher">Publisher of Book</InputLabel>
+                                <OutlinedInput  id="publisher" value={published}  label="Publisher" name="publisher" 
+                                onChange={(e)=>setPublished(e.target.value)}/>
                             </FormControl>
-                            <small className="fm-invalid">{categoryError}</small>
-                            </Box>
-                            {/* <Box paddingBottom={2}>
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="incharge">Incharge</InputLabel>
-                                <OutlinedInput  id="incharge" value={incharge}  label="Incharge" name="incharge"
-                                onChange={(e)=>setIncharge(e.target.value)}/>
-                            </FormControl>
+                            <small className="fm-invalid">{addressError}</small>
                             </Box>
                             <Box paddingBottom={2}>
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="parent">Parent</InputLabel>
-                                <OutlinedInput  id="parent" value={parent}  label="Parent" name="parent" 
-                                onChange={(e)=>setParent(e.target.value)}/>
+                            <FormControl fullWidth variant="outlined"
+                            error={addressError===''?false:true}>
+                                <InputLabel htmlFor="qty">QTY</InputLabel>
+                                <OutlinedInput  id="qty" value={qty}  label="QTY" name="qty" 
+                                onChange={(e)=>setQty(e.target.value)}/>
                             </FormControl>
-                            </Box> */}
+                            <small className="fm-invalid">{addressError}</small>
+                            </Box>
                             <Divider/>
                             <Button variant="contained" color="primary" type="submit">SUBMIT</Button>
                         </form>
@@ -190,42 +150,3 @@ export default function BooksMultiForm(){
             
     );
 }
-
-// export function FormMultiSteps({children, ...props}){
-//     const childrenArray = React.Children.toArray(children);
-//     var [step, setStep] = useState(0);
-//     const current = childrenArray[step];
-
-//     const checkLast = () => {
-//         return step === childrenArray.length-1;
-//     }
-
-//     const OrganizationSubmit = () => {
-//         console.log("Values -")
-//     }
-
-//     return (
-//         <Formik {...props} onSubmit={async (values, helpers)=>{
-//             console.log("Submit Launched!");
-//             if(checkLast()){
-//                 await props.onSubmit(values, helpers);
-//             } else {
-//                 setStep(step=>step+1);
-//             }
-//         }}>
-//             <Form autoComplete="off">
-//                 {/* <Stepper alternativeLabel activeStep={step}>
-//                     {childrenArray.map((label) => (
-//                     <Step key={label}>
-//                         <StepLabel>{label}</StepLabel>
-//                     </Step>
-//                     ))}
-//                 </Stepper> */}
-//                 {current}
-//                 {step>0?<Button variant="contained" color="primary" margin={2} onClick={()=>setStep(step=>step-1)}>BACK</Button>:null}
-//                 {step===1?<Button variant="contained" color="primary" type="submit">SUBMIT</Button>:<Button variant="contained" color="primary" onClick={()=>setStep(step=>step+1)}>NEXT</Button>}
-                
-//             </Form>
-//         </Formik>
-//     )
-// }
