@@ -141,6 +141,25 @@ export default function BooksMultiForm(){
                             </FormControl>
                             <small className="fm-invalid">{addressError}</small>
                             </Box>
+                            <Box paddingBottom={2}>
+                            <FormControl fullWidth variant="outlined" className={classes.formControl}>
+                                <InputLabel id="category-lb">Choose Category</InputLabel>
+                                <Select
+                                labelId="category-lb"
+                                id="category"
+                                value={category}
+                                onChange={(e)=>setCategory(e.target.value)}
+                                label="Category"
+                                >
+                                <MenuItem selected={true} value={"General"}>General</MenuItem>
+                                <MenuItem value={"Novel"}>Novel</MenuItem>
+                                <MenuItem value={"Short Stories"}>Short Stories</MenuItem>
+                                <MenuItem value={"Documetries"}>Documetries</MenuItem>
+                                <MenuItem value={"Entertainment"}>Entertainment</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <small className="fm-invalid">{categoryError}</small>
+                            </Box>
                             <Divider/>
                             <Button variant="contained" color="primary" type="submit">SUBMIT</Button>
                         </form>
