@@ -216,41 +216,13 @@ function ResponsiveDrawer(props) {
             <ListItemText primary={'Books'} />
         </ListItem>
         </Link>
-        <Link to={`${url}/organizations`}>
-        <ListItem button key={'ORGANIZATIONS'} onClick={()=>setTopic('ORGANIZATIONS')}>
+        <Link to={`${url}/lendings`}>
+        <ListItem button key={'LENDINGS'} onClick={()=>setTopic('LENDINGS')}>
             <ListItemIcon><House /></ListItemIcon>
-            <ListItemText primary={'Organizations'} />
-        </ListItem>
-        </Link>
-        <Link to={`${url}/users`}>
-        <ListItem button key={'USERS'} onClick={()=>setTopic('USERS')}>
-            <ListItemIcon><VerifiedUser /></ListItemIcon>
-            <ListItemText primary={'Users'} />
-        </ListItem>
-        </Link>
-        <Link to={`${url}/map`}>
-        <ListItem button key={'MAP'}>
-            <ListItemIcon><MapIcon /></ListItemIcon>
-            <ListItemText primary={'Map'} />
+            <ListItemText primary={'Lendings'} />
         </ListItem>
         </Link>
       </List>
-      <Divider />
-      <List>
-        <Link to={`${url}/other`}>
-          <ListItem button key={'OTHER'}>
-              <ListItemIcon><DevicesOther /></ListItemIcon>
-              <ListItemText primary={'Other'} />
-          </ListItem>
-        </Link>
-        <Link to={`${url}/settings`}>
-          <ListItem button key={'SETTINGS'}>
-              <ListItemIcon><Settings /></ListItemIcon>
-              <ListItemText primary={'Settings'} />
-          </ListItem>
-        </Link>
-      </List>
-      <Divider />
     </div>
   );
 
@@ -360,8 +332,7 @@ function ResponsiveDrawer(props) {
         <Switch>
                 <Route path={path} exact component={Main}/>
                 <Route path={`${path}/books`}exact component={Books}/>
-                <Route path={`${path}/users`}exact component={Users}/>
-                <Route path={`${path}/organizations`} component={Organizations}/>
+                <Route path={`${path}/lendings`}exact component={Users}/>
         </Switch>
       </Grid>
       </main>
