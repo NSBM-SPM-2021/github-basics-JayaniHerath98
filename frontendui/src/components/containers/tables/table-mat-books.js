@@ -12,6 +12,7 @@ import books_service from "../../../services/books_service";
 import Chips from "../chips/chips";
 import Loadder from "../loadder/loadder";
 import BooksModalDialog from '../main/forms/books-popup';
+import { Button } from "@material-ui/core";
 
 
 const useStyles = makeStyles({
@@ -54,13 +55,13 @@ export default function BooksTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const getData = async () => {
-    console.log("HII");
-    // await officials_service.getOfficials().then((users)=>{
-    //     setRows(users);
-    // })
     await books_service.getBooks().then((books)=>{
       setRows(books);
-  })
+    });
+  }
+
+  const deleteOrganization = async (id) => {
+    await books_service.deleteBook(id);
   }
 
   const sortData = (array, order, orderBy) => {
@@ -137,6 +138,7 @@ export default function BooksTable() {
               <i class="fas fa-arrow-circle-up" onClick={()=>sortData(rows, 'acendings', 'published')}></i> 
               <i class="fas fa-arrow-circle-down" onClick={()=>sortData(rows, 'descending', 'published')}></i>
             </TableCell>
+            <TableCell>Options</TableCell>
           </TableRow>
         </TableHead>
         
@@ -151,7 +153,16 @@ export default function BooksTable() {
                 <TableCell align="left">{row.name}</TableCell>
                 <TableCell align="left">{row.author}</TableCell>
                 <TableCell align="left">{row.published}</TableCell>
-                <TableCell align="left"><Chips type="tag" color="primary" values={[{title: row.category, link: '/users/{ID}'}]} /></TableCell>
+                <TableCell align="left">
+                  <Chips type="tag" color="primary" values={[{title: row.category, link: '/users/{ID}'}]} />
+                  {/* <Chips type="tag" color="danger" values={[{title: row.category, link: '/users/{ID}'}]} /> */}
+                </TableCell>
+                <TableCell align="left">
+                  <Button className="btn btn-danger" onClick={()=>{
+                    deleteOrganization(row.id);
+                    setRows(rows.filter(item => item.id !== row.id));
+                    }}>DELETE</Button>
+                </TableCell>
               </TableRow>
             ))}
           {emptyRows > 0 && (
