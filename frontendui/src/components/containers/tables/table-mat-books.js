@@ -60,6 +60,10 @@ export default function BooksTable() {
     });
   }
 
+  const updateBook = async (id, body) => {
+    await books_service.updateBook(id, body);
+  }
+
   const deleteOrganization = async (id) => {
     await books_service.deleteBook(id);
   }
@@ -159,7 +163,12 @@ export default function BooksTable() {
                 </TableCell>
                 <TableCell align="left">
                   <Button className="btn btn-danger" onClick={()=>{
-                    deleteOrganization(row.id);
+                    updateBook(row.id);
+                    setRows(rows.filter(item => item.id !== row.id));
+                    }}>UPDATE</Button>
+                    ||
+                    <Button className="btn btn-danger" onClick={()=>{
+                    deleteBook(row.id);
                     setRows(rows.filter(item => item.id !== row.id));
                     }}>DELETE</Button>
                 </TableCell>
