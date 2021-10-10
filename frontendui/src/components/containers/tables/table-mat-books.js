@@ -64,7 +64,7 @@ export default function BooksTable() {
     await books_service.updateBook(id, body);
   }
 
-  const deleteOrganization = async (id) => {
+  const deleteBook = async (id) => {
     await books_service.deleteBook(id);
   }
 
