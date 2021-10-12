@@ -18,7 +18,7 @@ const SingleBook = () => {
     }
     useEffect(() => {
         loadResource();
-        
+        console.debug(selected);
     }, [])
     return (
         <>
@@ -29,19 +29,19 @@ const SingleBook = () => {
                         <div className="card-content ct-flex">
                             <div className="cont-left float-left">
                                 <small>Book Information</small>
-                                <h4>{selected.name}</h4>
-                                <p>{selected.description}</p>
+                                <h4>{selected[0].name}</h4>
+                                <p>{selected[0].description}</p>
 
                                 <div className="card-body">
-                                    <p>Category : <span>{selected.category}</span></p>
-                                    <p>Author : <span>{selected.author}</span></p>
-                                    <p>Publisher : <span>{selected.published}</span></p>
-                                    <p>QTY : <span>{selected.qty||1}</span></p>
+                                    <p>Category : <span>{selected[0].category}</span></p>
+                                    <p>Author : <span>{selected[0].author}</span></p>
+                                    <p>Publisher : <span>{selected[0].published}</span></p>
+                                    <p>QTY : <span>{selected[0].qty||1}</span></p>
                                 </div>
                             </div>
                             <div className="cont-right float-right">
                                 <div className="container-im container-flex">
-                                <i class="far fa-building font-special"></i>
+                                <i class="fas fa-book font-special"></i>
                                 </div>
                             </div>
                         </div>

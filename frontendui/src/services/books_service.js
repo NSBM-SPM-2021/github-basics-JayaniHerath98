@@ -23,7 +23,6 @@ class BookService {
         var obj = null;
         await axios.get(`${path}/${id}`).then((response)=>{
             obj =  response.data;
-            alert(obj.name);
         }).catch(handleErrors);
         return obj;
     }

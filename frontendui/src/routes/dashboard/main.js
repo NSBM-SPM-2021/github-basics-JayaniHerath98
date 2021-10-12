@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import Chips from '../../components/containers/chips/chips';
-import SampleTable from '../../components/containers/tables/table-mat-books';
-import Loadder from '../../components/containers/loadder/loadder';
+import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
+import CustomButton from '../../components/containers/main/buttons/button';
 function Main(){
     let { path, url } = useRouteMatch();
     const [sidenav, setSideNav] = useState(true);
@@ -16,8 +14,8 @@ function Main(){
                 <div className="container-header">
                     <h2>Library Summary </h2>
                 </div>
-
-                <SampleTable/>
+                <Link to={`${url}/books`}><CustomButton color="primary" text="Get Books" values={[{title: 'GO to Books'}]} onClick={()=>null}/></Link>
+               
 
 
         </>
