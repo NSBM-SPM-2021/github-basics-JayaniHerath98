@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import queryString from 'query-string';
-import organization_service from '../../services/organization_service';
+import book_service from '../../services/books_service';
 // import OrganizationsUserTable from '../../components/containers/tables/table-mat-organization-users';
 import Loadder from '../../components/containers/loadder/loadder';
 import { Card, CardContent, Divider } from '@material-ui/core';
 
 
-const SingleOrganization = () => {
+const SingleBook = () => {
     const {id} = queryString.parse(window.location.search);
     const [selected, setSelected] = useState(null);
     const loadResource = async () => {
+        console.debug(id);
         if(id){
-            setSelected(await organization_service.getOrganization(id));  
-            console.log(selected); 
+            setSelected(await book_service.getBook(id));  
         }
            
     }
@@ -28,15 +28,15 @@ const SingleOrganization = () => {
                         selected?
                         <div className="card-content ct-flex">
                             <div className="cont-left float-left">
-                                <small>Organization Information</small>
+                                <small>Book Information</small>
                                 <h4>{selected.name}</h4>
                                 <p>{selected.description}</p>
 
                                 <div className="card-body">
-                                    <p>Address : <span>{selected.address}</span></p>
-                                    <p>Contact : <span>{selected.contact}</span></p>
-                                    <p>Incharge : <span>{selected.incharge}</span></p>
-                                    <p>Incharge : <span>{selected.incharge}</span></p>
+                                    <p>Category : <span>{selected.category}</span></p>
+                                    <p>Author : <span>{selected.author}</span></p>
+                                    <p>Publisher : <span>{selected.published}</span></p>
+                                    <p>QTY : <span>{selected.qty||1}</span></p>
                                 </div>
                             </div>
                             <div className="cont-right float-right">
@@ -64,4 +64,4 @@ const SingleOrganization = () => {
     );
 }
 
-export default SingleOrganization;
+export default SingleBook;

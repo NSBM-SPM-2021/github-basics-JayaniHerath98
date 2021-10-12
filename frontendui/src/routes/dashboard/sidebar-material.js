@@ -21,13 +21,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { Details, House, VerifiedUser, Settings, DevicesOther } from '@material-ui/icons';
+import { Details, House, Book, Settings, DevicesOther } from '@material-ui/icons';
 import MapIcon from '@material-ui/icons/Map';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme, ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { Route, Switch, NavLink, Link, useRouteMatch, useHistory } from 'react-router-dom';
 import Users from './users';
-import Organizations from './organizations';
 import Main from './main';
 import './dashboard.css';
 import { Grid } from '@material-ui/core';
@@ -156,7 +155,7 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [currentTopic, setTopic] = useState('REPORTING APP');
+  const [currentTopic, setTopic] = useState('LIBRARY MANAGEMENT APP');
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -211,8 +210,8 @@ function ResponsiveDrawer(props) {
         </ListItem>
         </Link>
         <Link to={`${url}/books`}>
-        <ListItem button key={'BOOKS'} onClick={()=>setTopic('BOOKSS')}>
-            <ListItemIcon><House /></ListItemIcon>
+        <ListItem button key={'BOOKS'} onClick={()=>setTopic('BOOKS')}>
+            <ListItemIcon><Book/></ListItemIcon>
             <ListItemText primary={'Books'} />
         </ListItem>
         </Link>
@@ -331,7 +330,7 @@ function ResponsiveDrawer(props) {
       <Grid item xs={12}>
         <Switch>
                 <Route path={path} exact component={Main}/>
-                <Route path={`${path}/books`}exact component={Books}/>
+                <Route path={`${path}/books`} component={Books}/>
                 <Route path={`${path}/lendings`}exact component={Users}/>
         </Switch>
       </Grid>

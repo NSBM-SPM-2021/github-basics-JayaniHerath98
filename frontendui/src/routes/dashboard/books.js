@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+import { Route, Switch, NavLink, Link, useRouteMatch } from 'react-router-dom';
 import BooksTable from '../../components/containers/tables/table-mat-books';
+import SingleBook from './book-single';
 const Books = () => {
-   
+    const {path, url} = useRouteMatch();
     return (
         <>
                 {/* <div className="container-header">
@@ -9,7 +11,11 @@ const Books = () => {
                     <p>Dashboard consist of necessary settings for admins and paticular management roles.</p>
                 </div> */}
 
-                <BooksTable />
+                {/* <BooksTable /> */}
+                <Switch>
+                    <Route path={path} exact component={BooksTable}/>
+                    <Route path={`${path}/book`} exact component={SingleBook}/>
+                </Switch>
         </>
     );
 }

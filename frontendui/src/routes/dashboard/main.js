@@ -14,7 +14,7 @@ function Main(){
         <>
                 
                 <div className="container-header">
-                    <h2>User Summary </h2>
+                    <h2>Library Summary </h2>
                 </div>
 
                 <SampleTable/>

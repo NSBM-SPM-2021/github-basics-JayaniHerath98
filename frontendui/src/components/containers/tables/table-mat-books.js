@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link, useRouteMatch } from 'react-router-dom';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -13,6 +14,9 @@ import Chips from "../chips/chips";
 import Loadder from "../loadder/loadder";
 import BooksModalDialog from '../main/forms/books-popup';
 import { Button } from "@material-ui/core";
+import BooksModalUpdate from "../main/forms/Book.update.popup";
+import CustomButton from "../main/buttons/button";
+import { Delete } from "@material-ui/icons";
 
 
 const useStyles = makeStyles({
@@ -49,6 +53,7 @@ function stableSort(array, comparator) {
 }
 
 export default function BooksTable() {
+  const { path, url } = useRouteMatch();
   const classes = useStyles();
   var [rows, setRows] = useState([]);
   const [page, setPage] = React.useState(0);
@@ -154,7 +159,7 @@ export default function BooksTable() {
                 <TableCell component="th" scope="row">
                   {index+1}
                 </TableCell>
-                <TableCell align="left">{row.name}</TableCell>
+                <TableCell align="left"><Link to={`${url}/book?id=${row.id}`}>{row.name}</Link></TableCell>
                 <TableCell align="left">{row.author}</TableCell>
                 <TableCell align="left">{row.published}</TableCell>
                 <TableCell align="left">
@@ -162,15 +167,12 @@ export default function BooksTable() {
                   {/* <Chips type="tag" color="danger" values={[{title: row.category, link: '/users/{ID}'}]} /> */}
                 </TableCell>
                 <TableCell align="left">
-                  <Button className="btn btn-danger" onClick={()=>{
-                    updateBook(row.id);
-                    setRows(rows.filter(item => item.id !== row.id));
-                    }}>UPDATE</Button>
-                    ||
-                    <Button className="btn btn-danger" onClick={()=>{
+                  
+                    <BooksModalUpdate book={row}/>
+                    <CustomButton className="btn btn-danger" icon={(<Delete />)} color="danger" onClick={()=>{
                     deleteBook(row.id);
                     setRows(rows.filter(item => item.id !== row.id));
-                    }}>DELETE</Button>
+                    }}/>
                 </TableCell>
               </TableRow>
             ))}
